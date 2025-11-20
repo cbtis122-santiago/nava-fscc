@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Ver Trabajadores{% endblock %}
+{% block content %}
+<div class="card card-soft p-3">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Trabajadores</h4>
+    <a class="btn btn-success" href="{% url 'agregar_trabajador' %}">
+      <i class="bi bi-plus"></i> Nuevo Trabajador
+    </a>
+  </div>
+
+  <table class="table table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Puesto</th>
+        <th>Fecha de Contratación</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Sucursal</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in trabajadores %}
+      <tr>
+        <td>{{ t.nombre }}</td>
+        <td>{{ t.apellido }}</td>
+        <td>{{ t.puesto }}</td>
+        <td>{{ t.fecha_contratacion }}</td>
+        <td>{{ t.email }}</td>
+        <td>{{ t.telefono_personal }}</td>
+        <td>
+          {% if t.sucursal %}
+            {{ t.sucursal.nombre_tienda }} - {{ t.sucursal.ciudad }}
+          {% else %}
+            <em>Sin asignar</em>
+          {% endif %}
+        </td>
+        <td>
+          <a class="btn btn-sm btn-info" href="{% url 'actualizar_trabajador' t.id %}">
+            <i class="bi bi-pencil-square"></i> Editar
+          </a>
+          <a class="btn btn-sm btn-danger" href="{% url 'borrar_trabajador' t.id %}">
+            <i class="bi bi-trash"></i> Borrar
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="8" class="text-center text-muted">No existen trabajadores registrados.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

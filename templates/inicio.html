@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block title %}Inicio - IN-N-OUT{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12 mb-4">
+    <div class="text-center">
+      <h2 class="text-primary">Bienvenido al Sistema de Administración IN-N-OUT</h2>
+      <p class="lead text-muted">Panel de control general</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  
+  <div class="col-md-4 mb-4">
+    <div class="card card-soft h-100 shadow-sm">
+      <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0"><i class="bi bi-shop"></i> Sucursales</h5>
+      </div>
+      <div class="card-body text-center">
+        <h2 class="display-4 fw-bold text-primary mb-0">{{ total_sucursales }}</h2>
+        <p class="text-muted mb-4">Registradas</p>
+        
+        <div class="d-grid gap-2">
+          <a href="{% url 'agregar_sucursal' %}" class="btn btn-outline-primary">
+            <i class="bi bi-plus-circle"></i> Agregar
+          </a>
+          <a href="{% url 'ver_sucursales' %}" class="btn btn-outline-primary">
+            <i class="bi bi-list-ul"></i> Ver Lista
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card card-soft h-100 shadow-sm">
+      <div class="card-header bg-success text-white">
+        <h5 class="card-title mb-0"><i class="bi bi-person-badge"></i> Trabajadores</h5>
+      </div>
+      <div class="card-body text-center">
+        <h2 class="display-4 fw-bold text-success mb-0">{{ total_trabajadores }}</h2>
+        <p class="text-muted mb-4">Activos</p>
+
+        <div class="d-grid gap-2">
+          <a href="{% url 'agregar_trabajador' %}" class="btn btn-outline-success">
+            <i class="bi bi-person-plus"></i> Agregar
+          </a>
+          <a href="{% url 'ver_trabajadores' %}" class="btn btn-outline-success">
+            <i class="bi bi-people"></i> Ver Lista
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card card-soft h-100 shadow-sm">
+      <div class="card-header bg-info text-white">
+        <h5 class="card-title mb-0"><i class="bi bi-cart"></i> Pedidos</h5>
+      </div>
+      <div class="card-body text-center">
+        <h2 class="display-4 fw-bold text-info mb-0">{{ total_pedidos }}</h2>
+        <p class="text-muted mb-4">Totales</p>
+
+        <div class="d-grid gap-2">
+          <a href="{% url 'agregar_pedido' %}" class="btn btn-outline-info">
+            <i class="bi bi-cart-plus"></i> Agregar
+          </a>
+          <a href="{% url 'ver_pedidos' %}" class="btn btn-outline-info">
+            <i class="bi bi-receipt"></i> Ver Lista
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card card-soft h-100 shadow-sm">
+      <div class="card-header bg-warning text-white">
+        <h5 class="card-title mb-0"><i class="bi bi-egg-fried"></i> Productos</h5>
+      </div>
+      <div class="card-body text-center">
+        <h2 class="display-4 fw-bold text-warning mb-0">{{ total_productos }}</h2>
+        <p class="text-muted mb-4">En Menú</p>
+
+        <div class="d-grid gap-2">
+          <a href="{% url 'agregar_producto' %}" class="btn btn-outline-warning">
+            <i class="bi bi-plus-circle"></i> Agregar
+          </a>
+          <a href="{% url 'ver_productos' %}" class="btn btn-outline-warning">
+            <i class="bi bi-list-ul"></i> Ver Lista
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card card-soft h-100 shadow-sm">
+      <div class="card-header bg-secondary text-white">
+        <h5 class="card-title mb-0"><i class="bi bi-truck"></i> Proveedores</h5>
+      </div>
+      <div class="card-body text-center">
+        <h2 class="display-4 fw-bold text-secondary mb-0">{{ total_proveedores }}</h2>
+        <p class="text-muted mb-4">Registrados</p>
+
+        <div class="d-grid gap-2">
+          <a href="{% url 'agregar_proveedor' %}" class="btn btn-outline-secondary">
+            <i class="bi bi-plus-circle"></i> Agregar
+          </a>
+          <a href="{% url 'ver_proveedores' %}" class="btn btn-outline-secondary">
+            <i class="bi bi-list-ul"></i> Ver Lista
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card card-soft h-100 shadow-sm">
+      <div class="card-header bg-dark text-white">
+        <h5 class="card-title mb-0"><i class="bi bi-clipboard-data"></i> Inventario</h5>
+      </div>
+      <div class="card-body text-center">
+        <h2 class="display-4 fw-bold text-dark mb-0">{{ total_inventarios }}</h2>
+        <p class="text-muted mb-4">Registros</p>
+
+        <div class="d-grid gap-2">
+          <a href="{% url 'agregar_inventario' %}" class="btn btn-outline-dark">
+            <i class="bi bi-plus-circle"></i> Agregar
+          </a>
+          <a href="{% url 'ver_inventarios' %}" class="btn btn-outline-dark">
+            <i class="bi bi-list-ul"></i> Ver Lista
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

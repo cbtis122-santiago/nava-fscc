@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Agregar Inventario{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card card-soft shadow-sm">
+      <div class="card-header">
+        <h4 class="card-title mb-0">
+          <i class="bi bi-box-seam"></i> Agregar al Inventario
+        </h4>
+      </div>
+      <div class="card-body">
+        <form method="post" action="{% url 'agregar_inventario' %}">
+          {% csrf_token %}
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Producto <span class="text-danger">*</span></label>
+              <select class="form-select" name="producto" required>
+                <option value="">-- Selecciona producto --</option>
+                {% for producto in productos %}
+                  <option value="{{ producto.id }}">{{ producto.nombre }} ({{ producto.categoria }})</option>
+                {% empty %}
+                  <option value="" disabled>No hay productos registrados</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Proveedor <span class="text-danger">*</span></label>
+              <select class="form-select" name="proveedor" required>
+                <option value="">-- Selecciona proveedor --</option>
+                {% for proveedor in proveedores %}
+                  <option value="{{ proveedor.id }}">{{ proveedor.nombre_empresa }}</option>
+                {% empty %}
+                  <option value="" disabled>No hay proveedores registrados</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Cantidad <span class="text-danger">*</span></label>
+              <input class="form-control" name="cantidad" type="number" min="0" step="0.01" required placeholder="0">
+            </div>
+            
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Unidad de Medida</label>
+              <select class="form-select" name="unidad_medida" required>
+                <option value="Unidad">Unidad</option>
+                <option value="kg">Kilogramos (kg)</option>
+                <option value="lt">Litros (lt)</option>
+              </select>
+            </div>
+            
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Stock Mínimo</label>
+              <input class="form-control" name="stock_minimo" type="number" min="0" value="10" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Ubicación en Almacén</label>
+              <select class="form-select" name="ubicacion" required>
+                <option value="Almacén principal">Almacén principal</option>
+                <option value="Almacén secundario">Almacén secundario</option>
+              </select>
+            </div>
+            
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Número de Lote</label>
+              <input class="form-control" name="lote" placeholder="Ej: LOTE-2024-A">
+            </div>
+          </div>
+
+          <hr>
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i> Guardar Inventario
+          </button>
+          <a href="{% url 'ver_inventarios' %}" class="btn btn-secondary">
+            <i class="bi bi-x-circle"></i> Cancelar
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

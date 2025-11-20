@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Actualizar Inventario{% endblock %}
+{% block content %}
+<div class="card p-4 card-soft">
+  <h4>Actualizar Inventario</h4>
+  <form method="post" action="{% url 'realizar_actualizacion_inventario' inventario.id %}">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Producto</label>
+        <select class="form-select" name="producto" required>
+          <option value="">-- Selecciona producto --</option>
+          {% for producto in productos %}
+            <option value="{{ producto.id }}" {% if producto.id == inventario.producto.id %}selected{% endif %}>
+              {{ producto.nombre }} - ${{ producto.precio }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Proveedor</label>
+        <select class="form-select" name="proveedor" required>
+          <option value="">-- Selecciona proveedor --</option>
+          {% for proveedor in proveedores %}
+            <option value="{{ proveedor.id }}" {% if proveedor.id == inventario.proveedor.id %}selected{% endif %}>
+              {{ proveedor.nombre_empresa }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Cantidad</label>
+        <input class="form-control" name="cantidad" type="number" value="{{ inventario.cantidad }}" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Unidad de Medida</label>
+        <input class="form-control" name="unidad_medida" value="{{ inventario.unidad_medida }}">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Stock Mínimo</label>
+        <input class="form-control" name="stock_minimo" type="number" value="{{ inventario.stock_minimo }}">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Ubicación en Almacén</label>
+        <input class="form-control" name="ubicacion" value="{{ inventario.ubicacion }}">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Número de Lote</label>
+        <input class="form-control" name="lote" value="{{ inventario.lote }}" placeholder="LOTE-001">
+      </div>
+    </div>
+
+    <button class="btn btn-primary"><i class="bi bi-save"></i> Actualizar Inventario</button>
+    <a href="{% url 'ver_inventarios' %}" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancelar</a>
+  </form>
+</div>
+{% endblock %}

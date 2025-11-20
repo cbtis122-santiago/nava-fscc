@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Agregar Trabajador{% endblock %}
+{% block content %}
+<div class="card p-4 card-soft">
+  <h4>Agregar Trabajador</h4>
+  <form method="post">
+    {% csrf_token %}
+    
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" name="nombre" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Apellido</label>
+        <input class="form-control" name="apellido" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Puesto</label>
+        <input class="form-control" name="puesto" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Fecha de Contratación</label>
+        <input class="form-control" name="fecha_contratacion" type="date" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Correo Electrónico</label>
+        <input class="form-control" name="email" type="email" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Teléfono Personal</label>
+        <input class="form-control" name="telefono_personal" type="text">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Sucursal</label>
+      <select class="form-select" name="sucursal" required>
+        <option value="">-- Selecciona una sucursal --</option>
+        {% for s in sucursales %}
+          <option value="{{ s.id }}">{{ s.nombre_tienda }} - {{ s.ciudad }}</option>
+        {% empty %}
+          <option value="">No hay sucursales registradas</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button class="btn btn-primary">
+      <i class="bi bi-save"></i> Guardar
+    </button>
+    <a href="{% url 'ver_trabajadores' %}" class="btn btn-secondary">
+      <i class="bi bi-x-circle"></i> Cancelar
+    </a>
+  </form>
+</div>
+{% endblock %}
