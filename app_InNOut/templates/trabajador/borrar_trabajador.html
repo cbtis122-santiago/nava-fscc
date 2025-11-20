@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Borrar Trabajador{% endblock %}
+{% block content %}
+<div class="card p-4 card-soft">
+  <h4>Confirmar borrado</h4>
+  <p>¿Deseas eliminar al trabajador <strong>{{ trabajador.nombre }} {{ trabajador.apellido }}</strong>?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger">Sí, eliminar</button>
+    <a class="btn btn-secondary" href="{% url 'ver_trabajadores' %}">No, cancelar</a>
+  </form>
+</div>
+{% endblock %}

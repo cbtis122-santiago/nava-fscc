@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Borrar Inventario{% endblock %}
+{% block content %}
+<div class="card p-4 card-soft">
+  <h4>Confirmar borrado</h4>
+  <p>¿Deseas eliminar el registro de inventario para <strong>{{ inventario.producto.nombre }}</strong>?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger"><i class="bi bi-trash"></i> Sí, eliminar</button>
+    <a class="btn btn-secondary" href="{% url 'ver_inventarios' %}"><i class="bi bi-x-circle"></i> Cancelar</a>
+  </form>
+</div>
+{% endblock %}

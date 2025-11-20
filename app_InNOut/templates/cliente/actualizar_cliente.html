@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Actualizar Cliente{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card card-soft shadow-sm">
+      <div class="card-header">
+        <h4 class="card-title mb-0">Actualizar Cliente</h4>
+      </div>
+      <div class="card-body">
+        <form method="post" action="{% url 'realizar_actualizacion_cliente' cliente.id %}">
+          {% csrf_token %}
+          
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="{{ cliente.nombre }}" required>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Apellido</label>
+            <input type="text" name="apellido" class="form-control" value="{{ cliente.apellido }}" required>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Teléfono</label>
+            <input type="text" name="telefono" class="form-control" value="{{ cliente.telefono }}">
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" value="{{ cliente.email }}">
+          </div>
+          
+          <hr>
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          <a href="{% url 'ver_clientes' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

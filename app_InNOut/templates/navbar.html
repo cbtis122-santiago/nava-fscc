@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'inicio' %}">
+            <i class="bi bi-house-fill"></i> IN-N-OUT
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'inicio' %}">
+                        <i class="bi bi-house"></i> Inicio
+                    </a>
+                </li>
+                
+                <!-- Sucursales -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-shop"></i> Sucursales
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_sucursal' %}">Agregar Sucursal</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_sucursales' %}">Ver Sucursales</a></li>
+                    </ul>
+                </li>
+
+                <!-- Trabajadores -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-badge"></i> Trabajadores
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_trabajador' %}">Agregar Trabajador</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_trabajadores' %}">Ver Trabajadores</a></li>
+                    </ul>
+                </li>
+
+                <!-- Pedidos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-cart"></i> Pedidos
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_pedido' %}">Agregar Pedido</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_pedidos' %}">Ver Pedidos</a></li>
+                    </ul>
+                </li>
+
+                <!-- Productos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-egg-fried"></i> Productos
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_productos' %}">Ver Productos</a></li>
+                    </ul>
+                </li>
+
+                <!-- Proveedores -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-truck"></i> Proveedores
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_proveedor' %}">Agregar Proveedor</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_proveedores' %}">Ver Proveedores</a></li>
+                    </ul>
+                </li>
+
+                <!-- Inventario -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-clipboard-data"></i> Inventario
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_inventario' %}">Agregar Inventario</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_inventarios' %}">Ver Inventario</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

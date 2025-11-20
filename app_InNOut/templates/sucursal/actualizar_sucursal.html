@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Sucursal{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card card-soft">
+      <div class="card-header">
+        <h3 class="card-title">Actualizar: {{ sucursal.nombre_tienda }}</h3>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="{% url 'realizar_actualizacion_sucursal' sucursal.id %}">
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="nombre_tienda" class="form-label">Nombre de la Tienda</label>
+            <input type="text" class="form-control" id="nombre_tienda" name="nombre_tienda" value="{{ sucursal.nombre_tienda }}" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="direccion" class="form-label">Dirección</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" value="{{ sucursal.direccion }}">
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 mb-3">
+              <label for="ciudad" class="form-label">Ciudad</label>
+              <input type="text" class="form-control" id="ciudad" name="ciudad" value="{{ sucursal.ciudad }}" required>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="codigo_postal" class="form-label">Código Postal</label>
+              <input type="text" class="form-control" id="codigo_postal" name="codigo_postal" value="{{ sucursal.codigo_postal }}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="telefono_tienda" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="telefono_tienda" name="telefono_tienda" value="{{ sucursal.telefono_tienda }}">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="fecha_apertura" class="form-label">Fecha de Apertura</label>
+              <input type="date" class="form-control" id="fecha_apertura" name="fecha_apertura" value="{{ sucursal.fecha_apertura|date:'Y-m-d' }}">
+            </div>
+          </div>
+
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="es_drive_thru" name="es_drive_thru" {% if sucursal.es_drive_thru %}checked{% endif %}>
+            <label class="form-check-label" for="es_drive_thru">Tiene Drive-Thru</label>
+          </div>
+
+          <hr>
+          <button type="submit" class="btn btn-primary">Actualizar Sucursal</button>
+          <a href="{% url 'ver_sucursales' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
